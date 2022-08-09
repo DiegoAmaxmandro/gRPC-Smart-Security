@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "ds.service1";
+option java_outer_classname = "SmartLockServiceImpl";
+
+package SmartLock;
+
+// Interface exported by the server.
+service SmartLock {
+
+  //Unary RPC
+  rpc UnlockDoors(UnlockRequest) returns (UnlockResponse) {}
+
+
+    //Client Streaming RPC
+  rpc lockDoorsAndWindows(stream LockRequest) returns ( LockResponsee) {}
+
+}
+
+//Unary
+message UnlockRequest {
+  string unlockRequest = 1;
+}
+
+message UnlockResponse {
+    string unlockAproval = 1;
+}
+
+//Client Streaming
+message LockRequest {
+  int32 lockId = 1;
+  string lockRequest = 2;
+}
+
+message LockResponsee {
+    string lockConfirmation = 1;
+}

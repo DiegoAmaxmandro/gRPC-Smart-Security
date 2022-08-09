@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "ds.service2";
+option java_outer_classname = "IntruderAlarmServiceImpl";
+
+package IntruderAlarm;
+
+// Interface exported by the server.
+service IntruderAlarm {
+
+  //Unary RPC
+  rpc IntruderAlert (AlertRequest) returns (AlertResponse) {}
+
+  //Server Stream RPC
+  rpc LightOnAlert (LightRequest) returns (stream LightResponse) {}
+
+}
+
+message AlertRequest {
+  string intruder = 1;
+}
+
+message AlertResponse {
+  string sentHelp = 1;  ;
+}
+
+
+message LightRequest {
+  string lightTrigger = 1;
+}
+
+message LightResponse {
+  int32 lightId = 1;
+  bool lightsOn = 2;
+}

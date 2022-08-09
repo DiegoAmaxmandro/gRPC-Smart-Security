@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "ds.service3";
+option java_outer_classname = "CCTVServiceImpl";
+
+package CCTVService;
+
+
+service CCTVService {
+
+  //Bidirectional streaming RPC
+  rpc CamerasViewing (stream ImagesRequest) returns (stream ImagesResponse) {}
+
+  //Unary RCP
+  rpc PetAlert (PetAlertRequest) returns (PetAlertResponse) {}
+
+}
+
+message ImagesRequest {
+  int32 cameraID = 1;
+  string image = 2;
+}
+
+message ImagesResponse {
+  int32 cameraID = 1;
+  string image = 2;
+}
+
+message PetAlertRequest {
+  string petAlert = 1;
+}
+
+message PetAlertResponse {
+  string AlarmsOff = 1;
+}
