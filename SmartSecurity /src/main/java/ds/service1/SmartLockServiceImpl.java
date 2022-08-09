@@ -45,15 +45,14 @@ public final class SmartLockServiceImpl {
     java.lang.String[] descriptorData = {
       "\n\026SmartLockService.proto\022\tSmartLock\"&\n\rU" +
       "nlockRequest\022\025\n\runlockRequest\030\001 \001(\t\"\'\n\016U" +
-      "nlockResponse\022\025\n\runlockAproval\030\001 \001(\t\"2\n\013" +
-      "LockRequest\022\016\n\006lockId\030\001 \001(\005\022\023\n\013lockReque" +
-      "st\030\002 \001(\t\")\n\rLockResponsee\022\030\n\020lockConfirm" +
-      "ation\030\001 \001(\t2\236\001\n\tSmartLock\022D\n\013UnlockDoors" +
-      "\022\030.SmartLock.UnlockRequest\032\031.SmartLock.U" +
-      "nlockResponse\"\000\022K\n\023lockDoorsAndWindows\022\026" +
-      ".SmartLock.LockRequest\032\030.SmartLock.LockR" +
-      "esponsee\"\000(\001B%\n\013ds.service1B\024SmartLockSe" +
-      "rviceImplP\001b\006proto3"
+      "nlockResponse\022\025\n\runlockAproval\030\001 \001(\t\"\035\n\013" +
+      "LockRequest\022\016\n\006lockId\030\001 \001(\005\")\n\rLockRespo" +
+      "nsee\022\030\n\020lockConfirmation\030\001 \001(\t2\236\001\n\tSmart" +
+      "Lock\022D\n\013UnlockDoors\022\030.SmartLock.UnlockRe" +
+      "quest\032\031.SmartLock.UnlockResponse\"\000\022K\n\023lo" +
+      "ckDoorsAndWindows\022\026.SmartLock.LockReques" +
+      "t\032\030.SmartLock.LockResponsee\"\000(\001B%\n\013ds.se" +
+      "rvice1B\024SmartLockServiceImplP\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -84,7 +83,7 @@ public final class SmartLockServiceImpl {
     internal_static_SmartLock_LockRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SmartLock_LockRequest_descriptor,
-        new java.lang.String[] { "LockId", "LockRequest", });
+        new java.lang.String[] { "LockId", });
     internal_static_SmartLock_LockResponsee_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_SmartLock_LockResponsee_fieldAccessorTable = new

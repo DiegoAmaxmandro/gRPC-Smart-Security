@@ -30,7 +30,6 @@ message UnlockResponse {
 //Client Streaming
 message LockRequest {
   int32 lockId = 1;
-  string lockRequest = 2;
 }
 
 message LockResponsee {

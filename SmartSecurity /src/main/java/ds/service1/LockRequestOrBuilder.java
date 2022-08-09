@@ -11,14 +11,4 @@ public interface LockRequestOrBuilder extends
    * <code>int32 lockId = 1;</code>
    */
   int getLockId();
-
-  /**
-   * <code>string lockRequest = 2;</code>
-   */
-  java.lang.String getLockRequest();
-  /**
-   * <code>string lockRequest = 2;</code>
-   */
-  com.google.protobuf.ByteString
-      getLockRequestBytes();
 }
