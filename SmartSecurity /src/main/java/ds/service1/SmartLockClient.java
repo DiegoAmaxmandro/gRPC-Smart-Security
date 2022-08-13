@@ -9,8 +9,11 @@ import io.grpc.ManagedChannelBuilder;
 import io.grpc.stub.StreamObserver;
 
 
+
 public class SmartLockClient {
+	
 	public static SmartLockStub asyncStub;
+	
 	public static void main(String[] args) {
 		
 		
@@ -50,7 +53,7 @@ public class SmartLockClient {
 
 			@Override
 			public void onError(Throwable t) {
-				// TODO Auto-generated method stub
+				
 				
 			}
 
@@ -81,12 +84,12 @@ public class SmartLockClient {
 
 			System.out.println("Sending request to close doors and windows...");
 
-			// Mark the end of requests
+			
 			requestObserver.onCompleted();
 
 
-			// Sleep for a bit before sending the next one.
-			Thread.sleep(new Random().nextInt(1000) + 500);
+			
+			Thread.sleep(new Random().nextInt(5000) + 800);
 			
 
 		} catch (RuntimeException e) {

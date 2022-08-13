@@ -8,12 +8,7 @@ public interface LightRequestOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string lightTrigger = 1;</code>
+   * <code>bool lightTrigger = 1;</code>
    */
-  java.lang.String getLightTrigger();
-  /**
-   * <code>string lightTrigger = 1;</code>
-   */
-  com.google.protobuf.ByteString
-      getLightTriggerBytes();
+  boolean getLightTrigger();
 }

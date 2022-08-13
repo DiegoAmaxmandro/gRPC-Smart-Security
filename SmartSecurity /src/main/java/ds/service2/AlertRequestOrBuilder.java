@@ -8,12 +8,7 @@ public interface AlertRequestOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string intruder = 1;</code>
+   * <code>bool intruder = 1;</code>
    */
-  java.lang.String getIntruder();
-  /**
-   * <code>string intruder = 1;</code>
-   */
-  com.google.protobuf.ByteString
-      getIntruderBytes();
+  boolean getIntruder();
 }

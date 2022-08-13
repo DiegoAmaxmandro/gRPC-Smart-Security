@@ -44,16 +44,16 @@ public final class IntruderAlarmServiceImpl {
   static {
     java.lang.String[] descriptorData = {
       "\n\032IntruderAlarmService.proto\022\rIntruderAl" +
-      "arm\" \n\014AlertRequest\022\020\n\010intruder\030\001 \001(\t\"!\n" +
+      "arm\" \n\014AlertRequest\022\020\n\010intruder\030\001 \001(\010\"!\n" +
       "\rAlertResponse\022\020\n\010sentHelp\030\001 \001(\t\"$\n\014Ligh" +
-      "tRequest\022\024\n\014lightTrigger\030\001 \001(\t\"2\n\rLightR" +
-      "esponse\022\017\n\007lightId\030\001 \001(\005\022\020\n\010lightsOn\030\002 \001" +
-      "(\0102\254\001\n\rIntruderAlarm\022L\n\rIntruderAlert\022\033." +
-      "IntruderAlarm.AlertRequest\032\034.IntruderAla" +
-      "rm.AlertResponse\"\000\022M\n\014LightOnAlert\022\033.Int" +
-      "ruderAlarm.LightRequest\032\034.IntruderAlarm." +
-      "LightResponse\"\0000\001B)\n\013ds.service2B\030Intrud" +
-      "erAlarmServiceImplP\001b\006proto3"
+      "tRequest\022\024\n\014lightTrigger\030\001 \001(\010\"!\n\rLightR" +
+      "esponse\022\020\n\010lightsOn\030\002 \001(\t2\254\001\n\rIntruderAl" +
+      "arm\022L\n\rIntruderAlert\022\033.IntruderAlarm.Ale" +
+      "rtRequest\032\034.IntruderAlarm.AlertResponse\"" +
+      "\000\022M\n\014LightOnAlert\022\033.IntruderAlarm.LightR" +
+      "equest\032\034.IntruderAlarm.LightResponse\"\0000\001" +
+      "B)\n\013ds.service2B\030IntruderAlarmServiceImp" +
+      "lP\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -90,7 +90,7 @@ public final class IntruderAlarmServiceImpl {
     internal_static_IntruderAlarm_LightResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_IntruderAlarm_LightResponse_descriptor,
-        new java.lang.String[] { "LightId", "LightsOn", });
+        new java.lang.String[] { "LightsOn", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

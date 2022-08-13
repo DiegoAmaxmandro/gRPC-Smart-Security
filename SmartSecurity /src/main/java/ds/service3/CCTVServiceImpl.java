@@ -43,17 +43,17 @@ public final class CCTVServiceImpl {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\021CCTVService.proto\022\013CCTVService\"0\n\rImag" +
-      "esRequest\022\020\n\010cameraID\030\001 \001(\005\022\r\n\005image\030\002 \001" +
-      "(\t\"1\n\016ImagesResponse\022\020\n\010cameraID\030\001 \001(\005\022\r" +
-      "\n\005image\030\002 \001(\t\"#\n\017PetAlertRequest\022\020\n\010petA" +
-      "lert\030\001 \001(\t\"%\n\020PetAlertResponse\022\021\n\tAlarms" +
-      "Off\030\001 \001(\t2\251\001\n\013CCTVService\022O\n\016CamerasView" +
-      "ing\022\032.CCTVService.ImagesRequest\032\033.CCTVSe" +
-      "rvice.ImagesResponse\"\000(\0010\001\022I\n\010PetAlert\022\034" +
-      ".CCTVService.PetAlertRequest\032\035.CCTVServi" +
-      "ce.PetAlertResponse\"\000B \n\013ds.service3B\017CC" +
-      "TVServiceImplP\001b\006proto3"
+      "\n\021CCTVService.proto\022\013CCTVService\"&\n\rImag" +
+      "esRequest\022\025\n\rRequestImages\030\001 \001(\t\"(\n\016Imag" +
+      "esResponse\022\026\n\016ResponseImages\030\001 \001(\t\"#\n\017Pe" +
+      "tAlertRequest\022\020\n\010petAlert\030\001 \001(\t\"%\n\020PetAl" +
+      "ertResponse\022\021\n\tAlarmsOff\030\001 \001(\t2\251\001\n\013CCTVS" +
+      "ervice\022O\n\016CamerasViewing\022\032.CCTVService.I" +
+      "magesRequest\032\033.CCTVService.ImagesRespons" +
+      "e\"\000(\0010\001\022I\n\010PetAlert\022\034.CCTVService.PetAle" +
+      "rtRequest\032\035.CCTVService.PetAlertResponse" +
+      "\"\000B \n\013ds.service3B\017CCTVServiceImplP\001b\006pr" +
+      "oto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -72,13 +72,13 @@ public final class CCTVServiceImpl {
     internal_static_CCTVService_ImagesRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_CCTVService_ImagesRequest_descriptor,
-        new java.lang.String[] { "CameraID", "Image", });
+        new java.lang.String[] { "RequestImages", });
     internal_static_CCTVService_ImagesResponse_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_CCTVService_ImagesResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_CCTVService_ImagesResponse_descriptor,
-        new java.lang.String[] { "CameraID", "Image", });
+        new java.lang.String[] { "ResponseImages", });
     internal_static_CCTVService_PetAlertRequest_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_CCTVService_PetAlertRequest_fieldAccessorTable = new

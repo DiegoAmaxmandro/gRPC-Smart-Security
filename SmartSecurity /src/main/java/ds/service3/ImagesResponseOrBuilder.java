@@ -8,17 +8,12 @@ public interface ImagesResponseOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>int32 cameraID = 1;</code>
+   * <code>string ResponseImages = 1;</code>
    */
-  int getCameraID();
-
+  java.lang.String getResponseImages();
   /**
-   * <code>string image = 2;</code>
-   */
-  java.lang.String getImage();
-  /**
-   * <code>string image = 2;</code>
+   * <code>string ResponseImages = 1;</code>
    */
   com.google.protobuf.ByteString
-      getImageBytes();
+      getResponseImagesBytes();
 }

@@ -1,6 +1,6 @@
 package ds.service1;
 
-
+//On this class I created just the methods to run the services and I started the server in other class.
 
 import ds.service1.SmartLockGrpc.SmartLockImplBase;
 import io.grpc.stub.StreamObserver;
@@ -9,14 +9,17 @@ import io.grpc.stub.StreamObserver;
 
 public class SmartLockService extends SmartLockImplBase {
 	
+	
+	//Method to run the first RPC of the proto file, unary RPC
 	@Override
 	public void unlockDoors(UnlockRequest request, StreamObserver<UnlockResponse> responseObserver) {
 		System.out.println("starting the server..." + "\n");
 
 		String openDoors = request.getUnlockRequest();
 
-		UnlockResponse.Builder response = UnlockResponse.newBuilder();
-
+		UnlockResponse.Builder response = UnlockResponse.newBuilder();// building the object to get the response.
+		
+		//A condition just to validate the entry of the password.
 		if (openDoors.equals("myHome") ) {
 			response.setUnlockAproval("Doors unlocked successfully");
 		} else {
@@ -29,6 +32,7 @@ public class SmartLockService extends SmartLockImplBase {
 		responseObserver.onCompleted();
 	}
 
+	//Method to run the second RPC of the proto file, Client Streaming RPC
 	@Override
 	public StreamObserver<LockRequest> lockDoorsAndWindows(StreamObserver<LockResponsee> responseObserver) {
 

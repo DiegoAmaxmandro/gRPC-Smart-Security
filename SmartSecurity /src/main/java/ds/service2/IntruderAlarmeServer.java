@@ -1,4 +1,4 @@
-package ds.service1;
+package ds.service2;
 
 import java.io.IOException;
 import java.util.logging.Logger;
@@ -7,15 +7,14 @@ import io.grpc.ServerBuilder;
 
 
 
-
-public class SmartLockServer {
+public class IntruderAlarmeServer {
 	
-	private static final Logger logger = Logger.getLogger(SmartLockServer.class.getName());
+	private static final Logger logger = Logger.getLogger(IntruderAlarmeService.class.getName());
 	
 
 	public static void main(String[] args) throws IOException, InterruptedException {
 
-		Server server = ServerBuilder.forPort(5557).addService(new SmartLockService()).build();
+		Server server = ServerBuilder.forPort(5555).addService(new IntruderAlarmeService()).build();
 
 		server.start();
 
@@ -23,10 +22,6 @@ public class SmartLockServer {
 
 		server.awaitTermination();
 	}
-	
-	
-	
-
 	
 
 }

@@ -18,13 +18,11 @@ service CCTVService {
 }
 
 message ImagesRequest {
-  int32 cameraID = 1;
-  string image = 2;
+  string RequestImages = 1;
 }
 
 message ImagesResponse {
-  int32 cameraID = 1;
-  string image = 2;
+  string ResponseImages = 1;
 }
 
 message PetAlertRequest {

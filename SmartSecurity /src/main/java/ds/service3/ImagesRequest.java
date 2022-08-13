@@ -16,8 +16,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private ImagesRequest() {
-    cameraID_ = 0;
-    image_ = "";
+    requestImages_ = "";
   }
 
   @java.lang.Override
@@ -44,15 +43,10 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
-          case 8: {
-
-            cameraID_ = input.readInt32();
-            break;
-          }
-          case 18: {
+          case 10: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            image_ = s;
+            requestImages_ = s;
             break;
           }
           default: {
@@ -87,43 +81,34 @@ private static final long serialVersionUID = 0L;
             ds.service3.ImagesRequest.class, ds.service3.ImagesRequest.Builder.class);
   }
 
-  public static final int CAMERAID_FIELD_NUMBER = 1;
-  private int cameraID_;
+  public static final int REQUESTIMAGES_FIELD_NUMBER = 1;
+  private volatile java.lang.Object requestImages_;
   /**
-   * <code>int32 cameraID = 1;</code>
+   * <code>string RequestImages = 1;</code>
    */
-  public int getCameraID() {
-    return cameraID_;
-  }
-
-  public static final int IMAGE_FIELD_NUMBER = 2;
-  private volatile java.lang.Object image_;
-  /**
-   * <code>string image = 2;</code>
-   */
-  public java.lang.String getImage() {
-    java.lang.Object ref = image_;
+  public java.lang.String getRequestImages() {
+    java.lang.Object ref = requestImages_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      image_ = s;
+      requestImages_ = s;
       return s;
     }
   }
   /**
-   * <code>string image = 2;</code>
+   * <code>string RequestImages = 1;</code>
    */
   public com.google.protobuf.ByteString
-      getImageBytes() {
-    java.lang.Object ref = image_;
+      getRequestImagesBytes() {
+    java.lang.Object ref = requestImages_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      image_ = b;
+      requestImages_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -144,11 +129,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (cameraID_ != 0) {
-      output.writeInt32(1, cameraID_);
-    }
-    if (!getImageBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, image_);
+    if (!getRequestImagesBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, requestImages_);
     }
     unknownFields.writeTo(output);
   }
@@ -159,12 +141,8 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (cameraID_ != 0) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(1, cameraID_);
-    }
-    if (!getImageBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, image_);
+    if (!getRequestImagesBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, requestImages_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -182,10 +160,8 @@ private static final long serialVersionUID = 0L;
     ds.service3.ImagesRequest other = (ds.service3.ImagesRequest) obj;
 
     boolean result = true;
-    result = result && (getCameraID()
-        == other.getCameraID());
-    result = result && getImage()
-        .equals(other.getImage());
+    result = result && getRequestImages()
+        .equals(other.getRequestImages());
     result = result && unknownFields.equals(other.unknownFields);
     return result;
   }
@@ -197,10 +173,8 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + CAMERAID_FIELD_NUMBER;
-    hash = (53 * hash) + getCameraID();
-    hash = (37 * hash) + IMAGE_FIELD_NUMBER;
-    hash = (53 * hash) + getImage().hashCode();
+    hash = (37 * hash) + REQUESTIMAGES_FIELD_NUMBER;
+    hash = (53 * hash) + getRequestImages().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -334,9 +308,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      cameraID_ = 0;
-
-      image_ = "";
+      requestImages_ = "";
 
       return this;
     }
@@ -364,8 +336,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public ds.service3.ImagesRequest buildPartial() {
       ds.service3.ImagesRequest result = new ds.service3.ImagesRequest(this);
-      result.cameraID_ = cameraID_;
-      result.image_ = image_;
+      result.requestImages_ = requestImages_;
       onBuilt();
       return result;
     }
@@ -414,11 +385,8 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(ds.service3.ImagesRequest other) {
       if (other == ds.service3.ImagesRequest.getDefaultInstance()) return this;
-      if (other.getCameraID() != 0) {
-        setCameraID(other.getCameraID());
-      }
-      if (!other.getImage().isEmpty()) {
-        image_ = other.image_;
+      if (!other.getRequestImages().isEmpty()) {
+        requestImages_ = other.requestImages_;
         onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -450,97 +418,71 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private int cameraID_ ;
+    private java.lang.Object requestImages_ = "";
     /**
-     * <code>int32 cameraID = 1;</code>
+     * <code>string RequestImages = 1;</code>
      */
-    public int getCameraID() {
-      return cameraID_;
-    }
-    /**
-     * <code>int32 cameraID = 1;</code>
-     */
-    public Builder setCameraID(int value) {
-      
-      cameraID_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>int32 cameraID = 1;</code>
-     */
-    public Builder clearCameraID() {
-      
-      cameraID_ = 0;
-      onChanged();
-      return this;
-    }
-
-    private java.lang.Object image_ = "";
-    /**
-     * <code>string image = 2;</code>
-     */
-    public java.lang.String getImage() {
-      java.lang.Object ref = image_;
+    public java.lang.String getRequestImages() {
+      java.lang.Object ref = requestImages_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        image_ = s;
+        requestImages_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string image = 2;</code>
+     * <code>string RequestImages = 1;</code>
      */
     public com.google.protobuf.ByteString
-        getImageBytes() {
-      java.lang.Object ref = image_;
+        getRequestImagesBytes() {
+      java.lang.Object ref = requestImages_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        image_ = b;
+        requestImages_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string image = 2;</code>
+     * <code>string RequestImages = 1;</code>
      */
-    public Builder setImage(
+    public Builder setRequestImages(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      image_ = value;
+      requestImages_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string image = 2;</code>
+     * <code>string RequestImages = 1;</code>
      */
-    public Builder clearImage() {
+    public Builder clearRequestImages() {
       
-      image_ = getDefaultInstance().getImage();
+      requestImages_ = getDefaultInstance().getRequestImages();
       onChanged();
       return this;
     }
     /**
-     * <code>string image = 2;</code>
+     * <code>string RequestImages = 1;</code>
      */
-    public Builder setImageBytes(
+    public Builder setRequestImagesBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      image_ = value;
+      requestImages_ = value;
       onChanged();
       return this;
     }

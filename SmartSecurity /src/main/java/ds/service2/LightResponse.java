@@ -16,8 +16,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private LightResponse() {
-    lightId_ = 0;
-    lightsOn_ = false;
+    lightsOn_ = "";
   }
 
   @java.lang.Override
@@ -44,14 +43,10 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
-          case 8: {
+          case 18: {
+            java.lang.String s = input.readStringRequireUtf8();
 
-            lightId_ = input.readInt32();
-            break;
-          }
-          case 16: {
-
-            lightsOn_ = input.readBool();
+            lightsOn_ = s;
             break;
           }
           default: {
@@ -86,22 +81,38 @@ private static final long serialVersionUID = 0L;
             ds.service2.LightResponse.class, ds.service2.LightResponse.Builder.class);
   }
 
-  public static final int LIGHTID_FIELD_NUMBER = 1;
-  private int lightId_;
-  /**
-   * <code>int32 lightId = 1;</code>
-   */
-  public int getLightId() {
-    return lightId_;
-  }
-
   public static final int LIGHTSON_FIELD_NUMBER = 2;
-  private boolean lightsOn_;
+  private volatile java.lang.Object lightsOn_;
   /**
-   * <code>bool lightsOn = 2;</code>
+   * <code>string lightsOn = 2;</code>
    */
-  public boolean getLightsOn() {
-    return lightsOn_;
+  public java.lang.String getLightsOn() {
+    java.lang.Object ref = lightsOn_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      lightsOn_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string lightsOn = 2;</code>
+   */
+  public com.google.protobuf.ByteString
+      getLightsOnBytes() {
+    java.lang.Object ref = lightsOn_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      lightsOn_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
   }
 
   private byte memoizedIsInitialized = -1;
@@ -118,11 +129,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (lightId_ != 0) {
-      output.writeInt32(1, lightId_);
-    }
-    if (lightsOn_ != false) {
-      output.writeBool(2, lightsOn_);
+    if (!getLightsOnBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, lightsOn_);
     }
     unknownFields.writeTo(output);
   }
@@ -133,13 +141,8 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (lightId_ != 0) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(1, lightId_);
-    }
-    if (lightsOn_ != false) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeBoolSize(2, lightsOn_);
+    if (!getLightsOnBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, lightsOn_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -157,10 +160,8 @@ private static final long serialVersionUID = 0L;
     ds.service2.LightResponse other = (ds.service2.LightResponse) obj;
 
     boolean result = true;
-    result = result && (getLightId()
-        == other.getLightId());
-    result = result && (getLightsOn()
-        == other.getLightsOn());
+    result = result && getLightsOn()
+        .equals(other.getLightsOn());
     result = result && unknownFields.equals(other.unknownFields);
     return result;
   }
@@ -172,11 +173,8 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + LIGHTID_FIELD_NUMBER;
-    hash = (53 * hash) + getLightId();
     hash = (37 * hash) + LIGHTSON_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-        getLightsOn());
+    hash = (53 * hash) + getLightsOn().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -310,9 +308,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      lightId_ = 0;
-
-      lightsOn_ = false;
+      lightsOn_ = "";
 
       return this;
     }
@@ -340,7 +336,6 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public ds.service2.LightResponse buildPartial() {
       ds.service2.LightResponse result = new ds.service2.LightResponse(this);
-      result.lightId_ = lightId_;
       result.lightsOn_ = lightsOn_;
       onBuilt();
       return result;
@@ -390,11 +385,9 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(ds.service2.LightResponse other) {
       if (other == ds.service2.LightResponse.getDefaultInstance()) return this;
-      if (other.getLightId() != 0) {
-        setLightId(other.getLightId());
-      }
-      if (other.getLightsOn() != false) {
-        setLightsOn(other.getLightsOn());
+      if (!other.getLightsOn().isEmpty()) {
+        lightsOn_ = other.lightsOn_;
+        onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -425,54 +418,71 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private int lightId_ ;
+    private java.lang.Object lightsOn_ = "";
     /**
-     * <code>int32 lightId = 1;</code>
+     * <code>string lightsOn = 2;</code>
      */
-    public int getLightId() {
-      return lightId_;
+    public java.lang.String getLightsOn() {
+      java.lang.Object ref = lightsOn_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        lightsOn_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
     }
     /**
-     * <code>int32 lightId = 1;</code>
+     * <code>string lightsOn = 2;</code>
      */
-    public Builder setLightId(int value) {
-      
-      lightId_ = value;
-      onChanged();
-      return this;
+    public com.google.protobuf.ByteString
+        getLightsOnBytes() {
+      java.lang.Object ref = lightsOn_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        lightsOn_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
     /**
-     * <code>int32 lightId = 1;</code>
+     * <code>string lightsOn = 2;</code>
      */
-    public Builder clearLightId() {
-      
-      lightId_ = 0;
-      onChanged();
-      return this;
-    }
-
-    private boolean lightsOn_ ;
-    /**
-     * <code>bool lightsOn = 2;</code>
-     */
-    public boolean getLightsOn() {
-      return lightsOn_;
-    }
-    /**
-     * <code>bool lightsOn = 2;</code>
-     */
-    public Builder setLightsOn(boolean value) {
-      
+    public Builder setLightsOn(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
       lightsOn_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>bool lightsOn = 2;</code>
+     * <code>string lightsOn = 2;</code>
      */
     public Builder clearLightsOn() {
       
-      lightsOn_ = false;
+      lightsOn_ = getDefaultInstance().getLightsOn();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string lightsOn = 2;</code>
+     */
+    public Builder setLightsOnBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      lightsOn_ = value;
       onChanged();
       return this;
     }

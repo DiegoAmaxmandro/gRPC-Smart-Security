@@ -1,21 +1,18 @@
-package ds.service1;
+package ds.service3;
 
 import java.io.IOException;
 import java.util.logging.Logger;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 
-
-
-
-public class SmartLockServer {
+public class CCTVServer {
 	
-	private static final Logger logger = Logger.getLogger(SmartLockServer.class.getName());
+private static final Logger logger = Logger.getLogger(CCTVServer.class.getName());
 	
 
 	public static void main(String[] args) throws IOException, InterruptedException {
 
-		Server server = ServerBuilder.forPort(5557).addService(new SmartLockService()).build();
+		Server server = ServerBuilder.forPort(5559).addService(new CCTVservice()).build();
 
 		server.start();
 
@@ -23,10 +20,5 @@ public class SmartLockServer {
 
 		server.awaitTermination();
 	}
-	
-	
-	
-
-	
 
 }
