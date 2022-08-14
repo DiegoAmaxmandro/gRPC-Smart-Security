@@ -19,13 +19,13 @@ public class IntruderAlarmeClient {
 	private static ServiceInfo info;
 	public static void main(String[] args) throws InterruptedException {
 
-		
+		//Calling the method Discovery Service
 		String service_type = "_IntruderAlarm._tcp.local.";
 		setInfo(DiscoveryService.discoverService(service_type));
 		ManagedChannel chanel = ManagedChannelBuilder.forAddress("localhost", 55567).usePlaintext().build();
 		
 		
-		AlertRequest  Alertrequest = AlertRequest.newBuilder().setIntruder(true).build();
+		AlertRequest  Alertrequest = AlertRequest.newBuilder().setIntruder(true).build();//Isntatianting the channel
 		
 		
 		
@@ -43,14 +43,14 @@ public class IntruderAlarmeClient {
 		System.out.println("************* METHOD 2 *********");
 		ligthsOnBlocking();
 		
-		chanel.shutdown();
+		chanel.shutdown();//closing the channel
 	
 	}
 	
 	
 	
 	
-
+	//Method to send the request to the server
 	public static void ligthsOn(){
 		LightRequest request = LightRequest.newBuilder().setLightTrigger(true).build();
 		
@@ -89,7 +89,7 @@ public class IntruderAlarmeClient {
 	}
 	
 	
-	
+	//Method to send the request to the server
 	public static void ligthsOnBlocking() {
 	
 		

@@ -23,14 +23,14 @@ public class CCTVClient {
 	public static void main(String[] args) throws InterruptedException {
 		
 		
-		
+		//Calling the method Discovery Service
 		String service_type = "_CCTV._tcp.local.";
 		info = DiscoveryService.discoverService(service_type);
 		
-		
+		//Building the channel
 		ManagedChannel chanel = ManagedChannelBuilder.forAddress("localhost", 55570).usePlaintext().build();
 		
-		CCTVServiceBlockingStub CCTVLocStub = CCTVServiceGrpc.newBlockingStub(chanel);
+		CCTVServiceBlockingStub CCTVLocStub = CCTVServiceGrpc.newBlockingStub(chanel);//Isntatianting the channel
 
 		PetAlertRequest PetAlertRequest = ds.service3.PetAlertRequest.newBuilder().setPetAlert("Pet detected").build();
 
@@ -41,12 +41,13 @@ public class CCTVClient {
 		System.out.println();// just to get space between lines
 
 		asyncStub = CCTVServiceGrpc.newStub(chanel);
-
+		
+		//Calling the method that request the server
 		cctvViewing();
 
 		chanel.shutdown();
 	}
-
+	//Method to send the request to the server
 	public static void cctvViewing() {
 
 		StreamObserver<ImagesResponse> responserObserver = new StreamObserver<ImagesResponse>() {

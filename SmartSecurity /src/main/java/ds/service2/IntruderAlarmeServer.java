@@ -21,15 +21,16 @@ public class IntruderAlarmeServer extends IntruderAlarmImplBase {
 
 	public static void main(String[] args) throws IOException, InterruptedException {
 
-		IntruderAlarmeServer intruderAlarmeServer = new IntruderAlarmeServer();
+		IntruderAlarmeServer intruderAlarmeServer = new IntruderAlarmeServer();// Instantiating the server
 		
-		Properties pro = intruderAlarmeServer.getProperties();
-		intruderAlarmeServer.ServiceRegister(pro);
+		Properties pro = intruderAlarmeServer.getProperties();// Getting properties for the server
+		intruderAlarmeServer.ServiceRegister(pro);//Making the register
 		
 		int port = Integer.valueOf(pro.getProperty("service_port"));
 		
 		
 		try {
+			//Initializing  and building the server
 			Server server = ServerBuilder.forPort(port).addService(intruderAlarmeServer).build().start();
 			
 			System.out.println("IntruderAlarm Server running on " + port);
@@ -45,7 +46,7 @@ public class IntruderAlarmeServer extends IntruderAlarmImplBase {
 		}
 	}
 	
-private Properties getProperties() {
+private Properties getProperties() {//Getting the properties from the file properties to use on the register of the server.
 		
 		Properties pro = null;		
 		
@@ -70,11 +71,11 @@ private Properties getProperties() {
 		 return pro;
 	}
 	
-	
+//Method to make the register of the dns of the server
 	private  void ServiceRegister(Properties pro) {
 		
 		 try {
-	            
+			 	//Declaring the jmDNS
 	            JmDNS jmdns = JmDNS.create(InetAddress.getLocalHost());
 	            
 	            String service_type = pro.getProperty("service_type") ;
@@ -104,15 +105,15 @@ private Properties getProperties() {
 	    
 	}
 	
-
+	//Method to respond  the request of the intruder alert service  
 	@Override
 	public void intruderAlert(AlertRequest request, StreamObserver<AlertResponse> responseObserver) {
 		System.out.println("starting the server..." + "\n");
 
 		boolean intruderAlert = request.getIntruder();
 
-		AlertResponse.Builder response = AlertResponse.newBuilder();
-
+		AlertResponse.Builder response = AlertResponse.newBuilder();//Building the response
+		//A condition to give the response to the client depending of the input in the request
 		if (intruderAlert) {
 			response.setSentHelp("Help is on the way!");
 		} else {
@@ -121,17 +122,18 @@ private Properties getProperties() {
 
 		}
 
-		responseObserver.onNext(response.build());
+		responseObserver.onNext(response.build());//calling the onNext method
 		responseObserver.onCompleted();
 	}
 
+	//Method to respond the request of the intruder alert service
 	@Override
 	public void lightOnAlert(LightRequest request, StreamObserver<LightResponse> responseObserver) {
 		
 		 boolean lights = request.getLightTrigger();
 	
 		do {
-			
+			//While there is presence alert the lights are tuning on
 			responseObserver.onNext(LightResponse.newBuilder().setLightsOn("The lights is on!").build());
 			
 		}while(lights);

@@ -17,7 +17,7 @@ public class SmartLockClient {
 	private static ServiceInfo info;
 	public static void main(String[] args) throws InterruptedException {
 		
-	
+	//Calling the method Discovery Service
 	String service_type = "_SmartLock._tcp.local.";
 	setInfo(DiscoveryService.discoverService(service_type));
 	
@@ -25,7 +25,7 @@ public class SmartLockClient {
 	ManagedChannel chanel = ManagedChannelBuilder.forAddress("localhost", 55566).usePlaintext().build();
 	
 
-	SmartLockBlockingStub SmartLocStub = SmartLockGrpc.newBlockingStub(chanel);
+	SmartLockBlockingStub SmartLocStub = SmartLockGrpc.newBlockingStub(chanel);//Isntatianting the channel
 
 	UnlockRequest Unlockrequest = UnlockRequest.newBuilder().setUnlockRequest("myHome").build();
 
@@ -40,12 +40,13 @@ public class SmartLockClient {
 																																// lines
 
 	System.out.println("************* METHOD 2 *********");
-
+	//Calling the method that request the server
 	lockId();
 
-	chanel.shutdown();
+	chanel.shutdown();//closing the channel
 
 	}
+	//Method to send the request to the server
 
 	public static void lockId() {
 
@@ -73,7 +74,7 @@ public class SmartLockClient {
 		StreamObserver<LockRequest> requestObserver = asyncStub.lockDoorsAndWindows(responseObserver);
 
 		try {
-
+			//Sending the request
 			requestObserver.onNext(LockRequest.newBuilder().setLockId(1).build());
 			requestObserver.onNext(LockRequest.newBuilder().setLockId(2).build());
 			requestObserver.onNext(LockRequest.newBuilder().setLockId(3).build());

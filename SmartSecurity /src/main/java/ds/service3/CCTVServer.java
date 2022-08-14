@@ -16,14 +16,15 @@ public class CCTVServer extends CCTVServiceImplBase {
 
 	public static void main(String[] args) throws IOException, InterruptedException {
 
-		CCTVServer cctvServer = new CCTVServer();
+		CCTVServer cctvServer = new CCTVServer();// Instantiating the server
 
-		Properties pro = cctvServer.getProperties();
-		cctvServer.ServiceRegister(pro);
+		Properties pro = cctvServer.getProperties();// Getting properties for the server
+		cctvServer.ServiceRegister(pro);//Making the register
 
 		int port = Integer.valueOf(pro.getProperty("service_port"));
 
 		try {
+			//Initializing  and building the server
 			Server server = ServerBuilder.forPort(port).addService(cctvServer).build().start();
 
 			System.out.println("CCTV Server running on " + port);
@@ -40,7 +41,7 @@ public class CCTVServer extends CCTVServiceImplBase {
 
 	}
 	
-private Properties getProperties() {
+private Properties getProperties() {//Getting the properties from the file properties to use on the register of the server.
 		
 		Properties pro = null;		
 		
@@ -65,11 +66,11 @@ private Properties getProperties() {
 		 return pro;
 	}
 	
-	
+//Method to make the register of the dns of the server
 	private  void ServiceRegister(Properties pro) {
 		
 		 try {
-	            
+	            //Declaring the jmDNS
 	            JmDNS jmdns = JmDNS.create(InetAddress.getLocalHost());
 	            
 	            String service_type = pro.getProperty("service_type") ;
@@ -99,7 +100,7 @@ private Properties getProperties() {
 	    
 	}
 	
-
+	//Method to respond  the request of the intruder CCTV service
 	@Override
 	public StreamObserver<ImagesRequest> camerasViewing(StreamObserver<ImagesResponse> responseObserver) {
 
@@ -110,7 +111,7 @@ private Properties getProperties() {
 				StringBuffer sb = new StringBuffer();
 
 				int camId = 1;
-
+				//The loop goes though the requests to simulate diferents images coming out 
 				for (int i = 0; i < 5; i++) {
 					sb.append(request.getRequestImages() + "Camera Id number: " + camId + "\n");
 					camId++;
@@ -135,6 +136,7 @@ private Properties getProperties() {
 		};
 	}
 
+	//Method to respond  the request of the intruder CCTV service
 	@Override
 	public void petAlert(PetAlertRequest request, StreamObserver<PetAlertResponse> responseObserver) {
 
@@ -143,7 +145,7 @@ private Properties getProperties() {
 		String petAlert = request.getPetAlert();
 
 		PetAlertResponse.Builder response = PetAlertResponse.newBuilder();
-
+		//A condition to give the response to the client depending of the input in the request
 		if (petAlert.equals("Pet detected")) {
 			response.setAlarmsOff("Alarm not triggered");
 		} else {

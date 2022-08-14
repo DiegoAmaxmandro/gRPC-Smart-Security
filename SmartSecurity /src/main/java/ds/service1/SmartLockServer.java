@@ -19,15 +19,16 @@ public class SmartLockServer extends SmartLockImplBase {
 	
 
 	public static void main(String[] args) throws IOException, InterruptedException {
-		SmartLockServer smartLockServer = new SmartLockServer();
+		SmartLockServer smartLockServer = new SmartLockServer();// Instantiating the server
 		
-		Properties pro = smartLockServer.getProperties();
-		smartLockServer.ServiceRegister(pro);
+		Properties pro = smartLockServer.getProperties();// Getting properties for the server
+		smartLockServer.ServiceRegister(pro);//Making the register
 		
-		int port = Integer.valueOf(pro.getProperty("service_port"));
+		int port = Integer.valueOf(pro.getProperty("service_port"));//Declaring the port of the server
 		
 		
 		try {
+			//Initializing  and building the server
 			Server server = ServerBuilder.forPort(port).addService(smartLockServer).build().start();
 			
 			System.out.println("SmartLock Server running on " + port);
@@ -45,7 +46,7 @@ public class SmartLockServer extends SmartLockImplBase {
 		
 	}
 	
-private Properties getProperties() {
+private Properties getProperties() {//Getting the properties from the file properties to use on the register of the server.
 		
 		Properties pro = null;		
 		
@@ -70,11 +71,11 @@ private Properties getProperties() {
 		 return pro;
 	}
 	
-	
+	//Method to make the register of the dns of the server
 	private  void ServiceRegister(Properties pro) {
 		
-		 try {
-	            
+		 try {	
+			 	//Declaring the jmDNS
 	            JmDNS jmdns = JmDNS.create(InetAddress.getLocalHost());
 	            
 	            String service_type = pro.getProperty("service_type") ;
